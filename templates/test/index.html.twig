@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2> Bienvenue à {{prenom |upper}}  {{nom |upper}} qui a {{age}} ans</h2>
+    {# Test de l'age de la personne #}
+{% if age>60 %}
+    <h3> Vous êtes un senior</h3>
+ {% else %}   
+ <h3> Vous êtes un jeune</h3>
+ {% endif %}   
+ {% include 'alert.html.twig' %}
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Fenetre modale
+  </button>
+  <button type="button" class="btn btn-secondary">
+   <a href="{{path('information',{'login':'victorhugo','age':18})}}" title="Acces à la vue information">vers vue Information</a>
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fenetre modale</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Bonjour à tous!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/symfony/appli1Symf/src/Controller/TestController.php'|file_link(0) }}">src/Controller/TestController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/symfony/appli1Symf/templates/test/index.html.twig'|file_link(0) }}">templates/test/index.html.twig</a></code></li>
+    </ul>
+</div>
+    <h3>Timestamp 1638972748  converti en date : {{1638972748 | date('d/m/Y H:i:s')}} </h3>
+   <h3> Selection aléatoire: {{ random(['pomme', 'orange', 'citon']) }} </h3>
+   {{ max(1, 3, 2) }}
+ {{ bienvenue |raw }}
+{% endblock %}
