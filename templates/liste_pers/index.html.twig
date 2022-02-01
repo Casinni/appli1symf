@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des personnes!{% endblock %}
+{% block body %}
+<table class="table" style="margin : auto;" >
+<thead>
+<tr>
+<th scope="col">ID</th>
+<th scope="col">NOM</th>
+<th scope="col">PRENOM</th>
+<th scope "col">Date de naissance </th>
+<th scope "col">Email </th>
+<th scope "col">Téléphone </th>
+<th scope "col">Login </th>
+<th scope "col">Password </th>
+</tr>
+</thead>
+{% set taille ='100px' %}
+{% set taille2 ='200px' %}
+{% for pers in listepersonnes %}
+<tr>
+<td style='width:{{taille}}'>
+{{ pers.id }}
+</td>
+<td style='width:{{taille}}'>
+{{ pers.nom }}
+</td>
+<td style='width:{{taille}}'>
+{{ pers.prenom }}
+</td>
+<td style='width:{{taille2}}'>
+{{ pers.dateNaiss | date('d-m-Y')}}
+</td>
+<td style='width:{{taille}}'>
+{{ pers.email }}
+</td>
+<td style='width:{{taille}}'>
+{{ pers.telephone}}
+</td>
+<td style='width:{{taille}}'>
+{{ pers.login }}
+</td>
+<td style='width:{{taille}}'>
+{{ pers.password }}
+</td>
+</tr> 
+{% endfor %}
+</table>
+{% endblock %}
+
+
